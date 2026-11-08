@@ -61,6 +61,10 @@ button{font:inherit;border-radius:999px;padding:13px 22px;min-height:52px;cursor
 .final{text-align:center;font-size:1.15rem}
 .final p{margin:0 0 14px}
 .final p:last-child{margin:0;font-size:1.35rem}
+.plan{align-self:center;width:min(900px,calc(100vw - 32px))}
+.plan img{display:block;width:100%;height:auto;border-radius:18px;margin:0 0 20px}
+.dl{display:block;max-width:360px;margin:0 auto;text-align:center;text-decoration:none;background:var(--green);color:#fffbe8;border-radius:999px;padding:13px 22px;font-size:1.08rem}
+.dl:hover{background:#3f5c2d}
 .times{-webkit-text-stroke:.3px currentColor;position:fixed;right:14px;bottom:14px;background:var(--cream);border-radius:20px;padding:10px 16px;font-size:1.05rem;display:grid;grid-template-columns:auto auto auto;align-items:center;column-gap:8px;row-gap:2px;box-shadow:0 4px 16px rgba(30,40,20,.22);font-variant-numeric:tabular-nums}
 .times span{justify-self:end;white-space:nowrap}
 .times svg{display:block}
@@ -86,6 +90,9 @@ const LANG = 'en';
 const T = {
   en: {
     title: 'Doğa & Deniz Wedding',
+    planTitle: 'Wedding day plan',
+    planDownload: 'Download the plan (PDF)',
+    planAlt: 'Illustrated wedding day plan: welcome 15:00 to 15:30, ceremony around 15:30, celebration around 16:15, dinner around 18:00, thank you around 21:30',
     times: [['Ceremony', '15:30 - 18:00'], ['Dinner', '18:00 - 21:00']],
     intro: [
       'Hi, if you are reading this, that means that you\'re invited to our special day on <strong>April 17th 2027</strong>!',
@@ -128,6 +135,9 @@ const T = {
   },
   tr: {
     title: 'Doğa & Deniz Düğün',
+    planTitle: 'Düğün günü planı',
+    planDownload: 'Planı indir (PDF)',
+    planAlt: 'Resimli düğün günü planı: karşılama 15:00 ile 15:30 arası, tören 15:30 civarı, kutlama 16:15 civarı, akşam yemeği 18:00 civarı, kapanış 21:30 civarı',
     times: [['Tören', '15:30 - 18:00'], ['Yemek', '18:00 - 21:00']],
     intro: [
       'Merhaba, eğer bunu okuyorsanız, <strong>17 Nisan 2027</strong> tarihindeki özel günümüze davetlisiniz demektir!',
@@ -341,7 +351,12 @@ const steps = {
     nav(btn => { if (!clean(S.declineName)) return err(t.errName); submit(btn); }, t.submit);
   },
 
-  done() { add(`<section class="card final">${t.done.map(p => `<p>${p}</p>`).join('')}</section>`); },
+  done() {
+    add(`<section class="card final">${t.done.map(p => `<p>${p}</p>`).join('')}</section>
+      <section class="card plan"><h2>${t.planTitle}</h2>
+      <a href="assets/wedding-day-plan.jpg" target="_blank" rel="noopener"><img src="assets/wedding-day-plan.jpg" alt="${esc(t.planAlt)}" loading="lazy"></a>
+      <a class="dl" href="assets/wedding-day-plan.pdf" download="Doga-Deniz-wedding-day-plan.pdf">${t.planDownload}</a></section>`);
+  },
   declined() { add(`<section class="card final">${t.declineDone.map(p => `<p>${p}</p>`).join('')}</section>`); }
 };
 

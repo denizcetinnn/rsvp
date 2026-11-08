@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Doğa & Deniz Düğün</title>
+<style>
+@font-face{font-family:"Libre Baskerville";src:url(assets/libre-baskerville.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Baskerville";src:url(assets/libre-baskerville-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Libre Baskerville";src:url(assets/libre-baskerville-bold.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Breadley Sans";src:url(assets/breadley-sans.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+:root{--cream:#fff3c4;--ink:#1f1d18;--muted:#6b5f43;--line:#1f1d18;--white:#fff;--green:#4a6b35;--green-soft:#e6efd9;--error:#a8261b;--radius-card:36px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font:20px/1.45 "Breadley Sans",system-ui,sans-serif;background:#7d9a5c}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:url(assets/bg-portrait.jpg) center/cover no-repeat}
+@media (min-aspect-ratio:1/1){body::before{background-image:url(assets/bg-landscape.jpg)}}
+main{max-width:560px;margin:0 auto;padding:0 16px 48px}
+body{overflow-x:hidden}
+.hero{text-align:center;padding:40px 0 36px;margin:28px 0 22px;position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;top:0;bottom:-8px;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;background:linear-gradient(to bottom,rgba(254,251,240,0) 0%,rgba(251,243,214,.72) 20%,rgba(247,232,178,.92) 50%,rgba(251,243,214,.72) 80%,rgba(254,251,240,0) 100%)}
+.hero p{margin:0;font-family:"Libre Baskerville",Georgia,serif}
+.date{font-size:.95rem;letter-spacing:.35em;padding-left:.35em}
+.hero h1{margin:6px 0 4px;font-family:"Libre Baskerville",Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(2.1rem,9.5vw,3.3rem);letter-spacing:.1em;padding-left:.1em;line-height:1.1}
+.venue{font-weight:700;font-size:clamp(.72rem,3.1vw,.95rem);letter-spacing:.3em;padding-left:.3em}
+#card{display:flex;flex-direction:column;gap:18px}
+.card{-webkit-text-stroke:.3px currentColor;background:var(--cream);border-radius:var(--radius-card);padding:30px 22px 28px;box-shadow:0 6px 24px rgba(30,40,20,.18)}
+@media (min-width:480px){.card{padding:34px 32px 30px}}
+@media (min-width:900px){body{font-size:21px}}
+h2{font-weight:400;font-size:1.6rem;line-height:1.3;text-align:center;margin:0 0 22px}
+.intro{text-align:center;font-size:1.05rem;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(31,29,24,.18)}
+.intro p{margin:0 0 10px}
+.intro p:last-child{margin:0}
+.hint{color:var(--muted);text-align:center;margin:-12px 0 18px;font-size:1rem}
+.options{display:flex;flex-direction:column;gap:12px}
+.opt{position:relative;display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:24px;padding:14px 20px;min-height:56px;cursor:pointer;font-size:1.08rem;transition:background .15s}
+.opt input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.opt:has(input[type=radio]:checked){background:var(--green-soft);border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.opt:has(input:focus-visible){outline:2px solid var(--green);outline-offset:2px}
+.opt input[type=checkbox]{order:2;margin:0 0 0 auto;flex:none;appearance:none;-webkit-appearance:none;width:30px;height:30px;border:2.5px solid var(--ink);border-radius:9px;background:var(--white);display:grid;place-content:center;cursor:pointer}
+.opt input[type=checkbox]:checked{background:#ebe8e0}
+.opt input[type=checkbox]:checked::after{content:"";width:12px;height:7px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateY(-2px) rotate(-45deg)}
+.text,textarea,select{width:100%;font:inherit;font-size:1.08rem;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:13px 22px;min-height:54px}
+textarea{border-radius:28px;min-height:150px;resize:vertical;padding:16px 22px}
+.text:focus,textarea:focus,select:focus{outline:2px solid var(--green);outline-offset:1px}
+::placeholder{color:#8a8170}
+select{display:block;width:160px;margin:0 auto;text-align:center;text-align-last:center;appearance:none;-webkit-appearance:none;padding-right:44px;padding-left:44px;font-size:1.4rem;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231f1d18' stroke-width='2'/%3E%3C/svg%3E") right 20px center no-repeat}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:8px;align-items:center}
+.row .text{flex:1;min-width:0}
+.row .secondary{flex:none;padding:10px 14px;font-size:.95rem}
+.other{margin-top:12px}
+.nav{display:flex;gap:10px;margin-top:26px}
+button{font:inherit;border-radius:999px;padding:13px 22px;min-height:52px;cursor:pointer;border:1px solid transparent;font-size:1.08rem}
+.primary{background:var(--green);color:#fffbe8;flex:1}
+.primary:hover{background:#3f5c2d}
+.primary:disabled{opacity:.6;cursor:default}
+.secondary{background:var(--white);color:var(--ink);border-color:var(--line)}
+.link{display:block;margin:14px auto 0;background:none;border:1px dashed var(--line);color:var(--ink);padding:10px 22px;min-height:46px}
+.error{color:var(--error);text-align:center;margin:16px 0 0;font-size:1rem}
+.final{text-align:center;font-size:1.15rem}
+.final p{margin:0 0 14px}
+.final p:last-child{margin:0;font-size:1.35rem}
+.times{-webkit-text-stroke:.3px currentColor;position:fixed;right:14px;bottom:14px;background:var(--cream);border-radius:20px;padding:10px 16px;font-size:1.05rem;display:grid;grid-template-columns:auto auto auto;align-items:center;column-gap:8px;row-gap:2px;box-shadow:0 4px 16px rgba(30,40,20,.22);font-variant-numeric:tabular-nums}
+.times span{justify-self:end;white-space:nowrap}
+.times svg{display:block}
+.times[hidden]{display:none}
+body.has-times main{padding-bottom:110px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<p class="date">17/04/2027</p>
+<h1>DOĞA &amp; DENIZ</h1>
+<p class="venue">TUIN VAN DE SMID, LEIDEN</p>
+</header>
+<div id="card"></div>
+</main>
+<div class="times" id="times" hidden></div>
+<script>
+// Paste your Google Apps Script web app URL here (see SETUP.md)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQroHQl-SfaQtCrZk_iu1NIvXLS69gvMJATVJbKGsIgO_hUHu-q7vPXgVTWA2CMNo/exec';
+const LANG = 'tr';
+
+const T = {
+  en: {
+    title: 'Doğa & Deniz Wedding',
+    times: [['Ceremony', '15:30 - 18:00'], ['Dinner', '18:00 - 21:00']],
+    intro: [
+      'Hi, if you are reading this, that means that you\'re invited to our special day on <strong>April 17th 2027</strong>!',
+      'Our wedding ceremony will take place at <strong>"De Tuin van de Smid"</strong> (Polderpark 8, 2322 LB, Leiden) at <strong>15:30</strong>, which will be followed by celebrations and dinner!',
+      'We expect the ceremony and celebrations to end around 18:00, and dinner to end at around 21:00.'
+    ],
+    q1: 'What is your availability?',
+    opts: { both: 'We will attend both the ceremony and dinner!', ceremony: 'We will only be able to attend the ceremony', dinner: 'We will only be able to attend the dinner', none: 'We won\'t be able to make it :(' },
+    countQ: { ceremony: 'How many people are coming to the ceremony (including you)?', dinner: 'How many people are coming to the dinner (including you)?' },
+    namesLabel: 'Please name those people:',
+    namePh: n => `Person ${n}: full name`,
+    dinnerQ: 'Which of these people are also joining the dinner?',
+    dinnerHint: 'Untick anyone who is only coming to the ceremony.',
+    extraQ: 'Is anyone coming only for the dinner?',
+    extraPh: 'Full name',
+    addPerson: '+ Add person',
+    remove: 'Remove',
+    drinksQ: 'Who will be drinking alcohol?',
+    drinksHint: 'Tick everyone who plans to drink.',
+    dietQ: 'Do you have any dietary requirements, allergies, or restrictions? (Select all that apply)',
+    diet: { none: 'None', vegan: 'Vegan', vegetarian: 'Vegetarian', other: 'Other' },
+    otherPh: 'Please specify',
+    notesQ: 'Thank you for the answers! Is there anything else we should know?',
+    notesPh: 'Optional',
+    declineTitle: 'We\'ll miss you!',
+    declineQ: 'Who is replying? (so we know who couldn\'t make it)',
+    declineDone: ['Thank you for letting us know. We\'ll miss you, and we hope to celebrate with you another time!'],
+    done: [
+      'We\'re looking forward to seeing you there! If there are any last minute changes please feel free to contact us!',
+      'Our wedding venue is in the middle of a park so we will be doing some walking. Make sure to bring your coats :))',
+      'See you at the wedding!!!'
+    ],
+    next: 'Next', back: 'Back', submit: 'Submit', sending: 'Sending...',
+    errChoose: 'Please choose an option.',
+    errName: 'Please fill in every name.',
+    errDup: 'Two people have the same name. Please make each one unique (for example, add a surname).',
+    errDiet: 'Please choose at least one option.',
+    errOther: 'Please tell us what the other requirement is.',
+    errSend: 'Something went wrong while sending. Please try again.'
+  },
+  tr: {
+    title: 'Doğa & Deniz Düğün',
+    times: [['Tören', '15:30 - 18:00'], ['Yemek', '18:00 - 21:00']],
+    intro: [
+      'Merhaba, eğer bunu okuyorsanız, <strong>17 Nisan 2027</strong> tarihindeki özel günümüze davetlisiniz demektir!',
+      'Düğün törenimiz saat <strong>15:30</strong>’da <strong>"De Tuin van de Smid"</strong> (Polderpark 8, 2322 LB, Leiden) adresinde gerçekleşecek; ardından kutlamalar ve akşam yemeği ile devam edeceğiz!',
+      'Tören ve kutlamaların 18:00 civarında, akşam yemeğinin ise 21:00 civarında sona ermesini öngörüyoruz.'
+    ],
+    q1: 'Katılım durumunuz nedir?',
+    opts: { both: 'Hem törene hem de yemeğe katılacağız!', ceremony: 'Sadece törene katılabileceğiz', dinner: 'Sadece yemeğe katılabileceğiz', none: 'Maalesef gelemeyeceğiz :(' },
+    countQ: { ceremony: 'Törene kaç kişi olarak geleceksiniz? (siz dahil)', dinner: 'Akşam yemeğine kaç kişi olarak geleceksiniz? (siz dahil)' },
+    namesLabel: 'Lütfen bu kişilerin isimlerini yazın:',
+    namePh: n => `${n}. kişi: ad soyad`,
+    dinnerQ: 'Bu kişilerden hangileri akşam yemeğine de katılacak?',
+    dinnerHint: 'Sadece törene katılacak olanların işaretini kaldırın.',
+    extraQ: 'Sadece akşam yemeğine gelecek biri var mı?',
+    extraPh: 'Ad soyad',
+    addPerson: '+ Kişi ekle',
+    remove: 'Kaldır',
+    drinksQ: 'Kimler alkol içmeyi planlıyor?',
+    drinksHint: 'İçmeyi planlayan herkesi işaretleyin.',
+    dietQ: 'Herhangi bir beslenme gereksiniminiz, alerjiniz veya kısıtlamanız var mı? (Birden fazla seçenek seçebilirsiniz)',
+    diet: { none: 'Yok', vegan: 'Vegan', vegetarian: 'Vejetaryen', other: 'Diğer' },
+    otherPh: 'Lütfen belirtin',
+    notesQ: 'Teşekkür ederiz! Başka bilmemiz gereken bir şey var mı?',
+    notesPh: 'İsteğe bağlı',
+    declineTitle: 'Sizi özleyeceğiz!',
+    declineQ: 'Kim yanıtlıyor? (kimin gelemeyeceğini bilmemiz için)',
+    declineDone: ['Haber verdiğiniz için teşekkür ederiz. Sizi özleyeceğiz, umarız başka bir zaman birlikte kutlarız!'],
+    done: [
+      'Sizi görmek için sabırsızlanıyoruz! Son dakika bir değişiklik olursa lütfen bizimle iletişime geçmekten çekinmeyin!',
+      'Düğün mekanımız bir parkın içinde yer alıyor, bu nedenle biraz yürümemiz gerekecek. Yanınıza montlarınızı almayı unutmayın :))',
+      'Düğünde görüşmek üzere!!!'
+    ],
+    next: 'İleri', back: 'Geri', submit: 'Gönder', sending: 'Gönderiliyor...',
+    errChoose: 'Lütfen bir seçenek seçin.',
+    errName: 'Lütfen tüm isimleri doldurun.',
+    errDup: 'İki kişi aynı isimle yazılmış. Lütfen her ismi farklı yazın (örneğin soyadı ekleyerek).',
+    errDiet: 'Lütfen en az bir seçenek seçin.',
+    errOther: 'Lütfen diğer gereksinimi belirtin.',
+    errSend: 'Gönderirken bir sorun oluştu. Lütfen tekrar deneyin.'
+  }
+};
+
+// Values stored in the sheet are always English, so both versions line up in one table
+const ATT_LABEL = { both: 'Ceremony + dinner', ceremony: 'Ceremony only', dinner: 'Dinner only', none: 'Not attending' };
+const DIET_LABEL = { none: 'None', vegan: 'Vegan', vegetarian: 'Vegetarian', other: 'Other' };
+const MAX_PEOPLE = 10;
+
+const t = T[LANG];
+const card = document.getElementById('card');
+document.title = t.title;
+const timesBox = document.getElementById('times');
+timesBox.innerHTML = t.times.map(([l, v]) => `<span>${l}</span><span><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h19M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span>${v}</span>`).join('');
+
+const S = { att: null, names: [''], dinnerSel: [], extras: [], drinkers: new Set(), diet: new Set(), dietOther: '', notes: '', declineName: '' };
+const hist = [];
+let step = 'att';
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const clean = s => String(s || '').trim().replace(/\s+/g, ' ');
+const hasDup = arr => new Set(arr.map(n => n.toLowerCase())).size !== arr.length;
+
+function ceremonyGuests() { return (S.att === 'both' || S.att === 'ceremony') ? S.names.map(clean) : []; }
+function dinnerGuests() {
+  if (S.att === 'dinner') return S.names.map(clean);
+  if (S.att === 'both') return S.names.map(clean).filter((n, i) => S.dinnerSel[i] !== false).concat(S.extras.map(clean).filter(Boolean));
+  return [];
+}
+function allGuests() { return [...new Set([...ceremonyGuests(), ...dinnerGuests()])]; }
+
+function go(next) { hist.push(step); step = next; render(); }
+function back() { step = hist.pop(); render(); }
+function err(msg) { const e = card.querySelector('.error'); e.textContent = msg || ''; e.hidden = !msg; return false; }
+function add(html) { card.insertAdjacentHTML('beforeend', html); }
+
+function nav(onNext, label) {
+  const row = document.createElement('div');
+  row.className = 'nav';
+  if (hist.length) {
+    const b = document.createElement('button');
+    b.className = 'secondary'; b.type = 'button'; b.textContent = t.back; b.onclick = back;
+    row.append(b);
+  }
+  const n = document.createElement('button');
+  n.className = 'primary'; n.type = 'button'; n.textContent = label || t.next; n.onclick = () => onNext(n);
+  row.append(n);
+  const cards = card.querySelectorAll('.card');
+  cards[cards.length - 1].append(row);
+}
+
+const steps = {
+  att() {
+    add(`<section class="card"><div class="intro">${t.intro.map(p => `<p>${p}</p>`).join('')}</div>
+      <h2>${t.q1}</h2>
+      <div class="options">${Object.keys(t.opts).map(k => `<label class="opt"><input type="radio" name="att" value="${k}" ${S.att === k ? 'checked' : ''}><span>${t.opts[k]}</span></label>`).join('')}</div>
+      <p class="error" hidden></p></section>`);
+    card.querySelectorAll('input[name=att]').forEach(r => r.onchange = () => { S.att = r.value; err(''); });
+    nav(() => { if (!S.att) return err(t.errChoose); go(S.att === 'none' ? 'decline' : 'count'); });
+  },
+
+  count() {
+    const kind = S.att === 'dinner' ? 'dinner' : 'ceremony';
+    const opts = Array.from({ length: MAX_PEOPLE }, (_, i) => `<option value="${i + 1}" ${S.names.length === i + 1 ? 'selected' : ''}>${i + 1}</option>`).join('');
+    add(`<section class="card"><h2>${t.countQ[kind]}</h2>
+      <select id="count" aria-label="${esc(t.countQ[kind])}">${opts}</select></section>
+      <section class="card"><h2>${t.namesLabel}</h2>
+      <div class="stack" id="names"></div>
+      <p class="error" hidden></p></section>`);
+    const box = card.querySelector('#names');
+    const draw = () => {
+      box.innerHTML = S.names.map((v, i) => `<input type="text" class="text" data-i="${i}" value="${esc(v)}" placeholder="${esc(t.namePh(i + 1))}" autocomplete="${i === 0 ? 'name' : 'off'}">`).join('');
+      box.querySelectorAll('input').forEach(inp => inp.oninput = () => { S.names[+inp.dataset.i] = inp.value; });
+    };
+    card.querySelector('#count').onchange = e => {
+      const n = +e.target.value;
+      S.names = S.names.slice(0, n);
+      while (S.names.length < n) S.names.push('');
+      S.dinnerSel = S.dinnerSel.slice(0, n);
+      draw();
+    };
+    draw();
+    nav(() => {
+      const names = S.names.map(clean);
+      if (names.some(n => !n)) return err(t.errName);
+      if (hasDup(names)) return err(t.errDup);
+      go(S.att === 'both' ? 'dinner' : 'drinks');
+    });
+  },
+
+  dinner() {
+    add(`<section class="card"><h2>${t.dinnerQ}</h2>
+      <p class="hint">${t.dinnerHint}</p>
+      <div class="options">${S.names.map((n, i) => `<label class="opt"><input type="checkbox" data-i="${i}" ${S.dinnerSel[i] !== false ? 'checked' : ''}><span>${esc(clean(n))}</span></label>`).join('')}</div>
+</section>
+      <section class="card"><h2>${t.extraQ}</h2>
+      <div class="stack" id="extras"></div>
+      <button type="button" class="link" id="add">${t.addPerson}</button>
+      <p class="error" hidden></p></section>`);
+    card.querySelectorAll('.options input').forEach(c => c.onchange = () => { S.dinnerSel[+c.dataset.i] = c.checked; });
+    const box = card.querySelector('#extras');
+    const draw = () => {
+      box.innerHTML = S.extras.map((v, i) => `<div class="row"><input type="text" class="text" data-i="${i}" value="${esc(v)}" placeholder="${esc(t.extraPh)}" autocomplete="off"><button type="button" class="secondary" data-rm="${i}">${t.remove}</button></div>`).join('');
+      box.querySelectorAll('input').forEach(inp => inp.oninput = () => { S.extras[+inp.dataset.i] = inp.value; });
+      box.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { S.extras.splice(+b.dataset.rm, 1); draw(); });
+    };
+    card.querySelector('#add').onclick = () => {
+      if (S.names.length + S.extras.length >= MAX_PEOPLE * 2) return;
+      S.extras.push(''); draw();
+      const inputs = box.querySelectorAll('input'); inputs[inputs.length - 1].focus();
+    };
+    draw();
+    nav(() => {
+      S.extras = S.extras.filter(e => clean(e));
+      if (hasDup(S.names.map(clean).concat(S.extras.map(clean)))) { draw(); return err(t.errDup); }
+      go('drinks');
+    });
+  },
+
+  drinks() {
+    const people = allGuests();
+    S.drinkers = new Set([...S.drinkers].filter(n => people.includes(n)));
+    add(`<section class="card"><h2>${t.drinksQ}</h2>
+      <p class="hint">${t.drinksHint}</p>
+      <div class="options">${people.map((n, i) => `<label class="opt"><input type="checkbox" data-i="${i}" ${S.drinkers.has(n) ? 'checked' : ''}><span>${esc(n)}</span></label>`).join('')}</div>
+      <p class="error" hidden></p></section>`);
+    card.querySelectorAll('.options input').forEach(c => c.onchange = () => {
+      const n = people[+c.dataset.i];
+      c.checked ? S.drinkers.add(n) : S.drinkers.delete(n);
+    });
+    nav(() => go('diet'));
+  },
+
+  diet() {
+    add(`<section class="card"><h2>${t.dietQ}</h2>
+      <div class="options">${Object.keys(t.diet).map(k => `<label class="opt"><input type="checkbox" value="${k}" ${S.diet.has(k) ? 'checked' : ''}><span>${t.diet[k]}</span></label>`).join('')}</div>
+      <input type="text" class="text other" id="other" placeholder="${esc(t.otherPh)}" value="${esc(S.dietOther)}" ${S.diet.has('other') ? '' : 'hidden'}>
+      <p class="error" hidden></p></section>`);
+    const boxes = [...card.querySelectorAll('.options input')];
+    const other = card.querySelector('#other');
+    other.oninput = () => { S.dietOther = other.value; };
+    boxes.forEach(c => c.onchange = () => {
+      if (c.checked && c.value === 'none') { S.diet.clear(); boxes.forEach(b => { if (b !== c) b.checked = false; }); }
+      if (c.checked && c.value !== 'none') { S.diet.delete('none'); boxes.find(b => b.value === 'none').checked = false; }
+      c.checked ? S.diet.add(c.value) : S.diet.delete(c.value);
+      other.hidden = !S.diet.has('other');
+      if (!other.hidden && c.value === 'other' && c.checked) other.focus();
+      err('');
+    });
+    nav(() => {
+      if (!S.diet.size) return err(t.errDiet);
+      if (S.diet.has('other') && !clean(S.dietOther)) return err(t.errOther);
+      go('notes');
+    });
+  },
+
+  notes() {
+    add(`<section class="card"><h2>${t.notesQ}</h2>
+      <textarea id="notes" placeholder="${esc(t.notesPh)}">${esc(S.notes)}</textarea>
+      <p class="error" hidden></p></section>`);
+    const ta = card.querySelector('#notes');
+    ta.oninput = () => { S.notes = ta.value; };
+    nav(submit, t.submit);
+  },
+
+  decline() {
+    add(`<section class="card"><h2>${t.declineTitle}</h2>
+      <label for="dn" class="hint" style="display:block;margin:-8px 0 16px">${t.declineQ}</label>
+      <input type="text" class="text" id="dn" value="${esc(S.declineName)}" autocomplete="name">
+      <p class="error" hidden></p></section>`);
+    const inp = card.querySelector('#dn');
+    inp.oninput = () => { S.declineName = inp.value; };
+    nav(btn => { if (!clean(S.declineName)) return err(t.errName); submit(btn); }, t.submit);
+  },
+
+  done() { add(`<section class="card final">${t.done.map(p => `<p>${p}</p>`).join('')}</section>`); },
+  declined() { add(`<section class="card final">${t.declineDone.map(p => `<p>${p}</p>`).join('')}</section>`); }
+};
+
+function payload() {
+  const declined = S.att === 'none';
+  const all = declined ? [] : allGuests();
+  return {
+    version: LANG.toUpperCase(),
+    replyName: declined ? clean(S.declineName) : clean(S.names[0]),
+    attendance: ATT_LABEL[S.att],
+    ceremonyGuests: declined ? [] : ceremonyGuests(),
+    dinnerGuests: declined ? [] : dinnerGuests(),
+    allGuests: all,
+    drinkers: all.filter(n => S.drinkers.has(n)),
+    diet: declined ? [] : Object.keys(DIET_LABEL).filter(k => S.diet.has(k)).map(k => DIET_LABEL[k]),
+    dietOther: !declined && S.diet.has('other') ? clean(S.dietOther) : '',
+    notes: declined ? '' : S.notes.trim()
+  };
+}
+
+async function submit(btn) {
+  const data = payload();
+  btn.disabled = true; btn.textContent = t.sending; err('');
+  try {
+    if (SCRIPT_URL) {
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+    } else {
+      console.log('RSVP not sent (SCRIPT_URL is empty):', data);
+    }
+    hist.length = 0;
+    step = S.att === 'none' ? 'declined' : 'done';
+    render();
+  } catch (e) {
+    btn.disabled = false; btn.textContent = t.submit; err(t.errSend);
+  }
+}
+
+function render() {
+  card.innerHTML = '';
+  steps[step]();
+  const showTimes = step !== 'att';
+  timesBox.hidden = !showTimes;
+  document.body.classList.toggle('has-times', showTimes);
+  window.scrollTo(0, 0);
+}
+render();
+</script>
+</body>
+</html>
